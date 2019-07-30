@@ -21,6 +21,7 @@
 		8A29296D22EEB828002E6106 /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A29296C22EEB828002E6106 /* constant.swift */; };
 		8AE8F91822EF856C0098A277 /* ForeCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8F91722EF856C0098A277 /* ForeCast.swift */; };
 		8AE8F91A22EF98240098A277 /* myCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8F91922EF98240098A277 /* myCell.swift */; };
+		8AE8F91C22EFA49C0098A277 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE8F91B22EFA49C0098A277 /* Location.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8A29296C22EEB828002E6106 /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		8AE8F91722EF856C0098A277 /* ForeCast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCast.swift; sourceTree = "<group>"; };
 		8AE8F91922EF98240098A277 /* myCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCell.swift; sourceTree = "<group>"; };
+		8AE8F91B22EFA49C0098A277 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		930032F73395468F58F862ED /* Pods_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DBE2F51C965D90D7DADCF84 /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +96,7 @@
 		8A29292B22EEAFCB002E6106 = {
 			isa = PBXGroup;
 			children = (
+				8AE8F91B22EFA49C0098A277 /* Location.swift */,
 				8AE8F91922EF98240098A277 /* myCell.swift */,
 				8AE8F91722EF856C0098A277 /* ForeCast.swift */,
 				8A29296C22EEB828002E6106 /* constant.swift */,
@@ -346,6 +349,7 @@
 				8AE8F91822EF856C0098A277 /* ForeCast.swift in Sources */,
 				8A29296D22EEB828002E6106 /* constant.swift in Sources */,
 				8A29296B22EEB794002E6106 /* currentWeather.swift in Sources */,
+				8AE8F91C22EFA49C0098A277 /* Location.swift in Sources */,
 				8A29294022EEAFCB002E6106 /* weather.xcdatamodeld in Sources */,
 				8AE8F91A22EF98240098A277 /* myCell.swift in Sources */,
 				8A29293A22EEAFCB002E6106 /* ViewController.swift in Sources */,

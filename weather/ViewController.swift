@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate{
 
     //Mark:- IBOUTLET
     @IBOutlet weak var table: UITableView!
@@ -24,6 +25,8 @@ class ViewController: UIViewController {
     var cw = currentWeather()
     var arrForecasts = [ForeCast]()
     
+    var lm = CLLocationManager()
+    var cl = CLLocation()
     
     
     //Mark:- FUNCTION
@@ -31,13 +34,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
-            cw.downloadweatherdetails {
-                self.downloadForecastData {
-                    self.dateUpdate()
-                    self.updateUI()
-                }
-            }
+        lm.delegate = self
+        lm.desiredAccuracy = kCLLocationAccuracyBest
+        lm.requestWhenInUseAuthorization()
+        lm.startMonitoringSignificantLocationChanges()
+        
         }
+    
         func dateUpdate(){
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .long
@@ -45,14 +48,16 @@ class ViewController: UIViewController {
             let currentDate = dateFormatter.string(from: Date())
             self.dateLabel.text = currentDate
         }
+    
         func updateUI(){
             locationLabel.text = self.cw.cityName
             tempLabel.text = "\(self.cw.currentTemp)"
             tempTypeLabel.text = self.cw.weatherType
             imgTemp.image = UIImage(named: cw.weatherType)
         }
-    func downloadForecastData(completed:@escaping downloadComplete){
-        Alamofire.request(FORECAST_URL).responseJSON{(response) in
+    
+        func downloadForecastData(completed:@escaping downloadComplete){
+            Alamofire.request(FORECAST_URL).responseJSON{(response) in
             let result = response.result
             
             if let dict = result.value as? [String:Any]{
@@ -68,6 +73,30 @@ class ViewController: UIViewController {
             completed()
         }
     }
+            
+    override func viewDidAppear(_ animated: Bool){
+                super.viewDidAppear(true)
+                locationAuthStatus()
+            }
+            
+        func locationAuthStatus(){
+            if CLLocationManager.authorizationStatus() == .authorizedWhenInUse{
+                cl = lm.location!
+                Location.shareInstances.lat = cl.coordinate.latitude
+                Location.shareInstances.lon = cl.coordinate.longitude
+                cw.downloadweatherdetails {
+                    self.downloadForecastData {
+                        self.dateUpdate()
+                        self.updateUI()
+                    }
+                }
+                
+            } else{
+                lm.requestWhenInUseAuthorization()
+                locationAuthStatus()
+            }
+        }
+
 }
 
 //Mark:- Extension
